@@ -85,7 +85,6 @@ export type Language = 'en' | 'vi';
 
 export type GeminiModel = 'gemini-2.5-pro' | 'gemini-flash-latest' | 'gemini-2.5-flash' | 'gemini-flash-lite-latest';
 
-// FIX: Export ShuffleSettings interface to fix module import error.
 export interface ShuffleSettings {
   shuffleQuestions: boolean;
   shuffleOptions: boolean;
@@ -121,3 +120,17 @@ export type CustomQuestionCountModes = { [key in SelectableQuestionType]?: 'auto
 export type DifficultyLevels = { [key in SelectableQuestionType]?: Set<DifficultyLevel> };
 export type DifficultyCountModes = { [key in SelectableQuestionType]?: { [key in DifficultyLevel]?: 'auto' | 'custom' } };
 export type DifficultyCounts = { [key in SelectableQuestionType]?: { [key in DifficultyLevel]?: number } };
+
+// --- Job Types ---
+export type JobStatus = 'processing' | 'completed' | 'error' | 'cancelled';
+
+export interface ProcessingJob {
+  id: string;
+  files: File[];
+  title: string;
+  generationMode: GenerationMode;
+  status: JobStatus;
+  result?: GeneratedQuiz;
+  error?: string;
+  controller: AbortController;
+}

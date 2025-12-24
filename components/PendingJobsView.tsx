@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { ProcessingJob } from '../App';
+import { ProcessingJob } from '../types';
 import { GeneratedQuiz, Language } from '../types';
 import { CloseIcon, SpinnerIcon, CheckCircleIcon, XCircleIcon, StopCircleIcon, ChevronDownIcon, ExclamationTriangleIcon, TrashIcon, FileTypeIcon, BookOpenIcon } from './icons';
 import LoadingQAnimation from './LoadingQAnimation';

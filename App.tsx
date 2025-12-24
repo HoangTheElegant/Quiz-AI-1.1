@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useMemo } from 'react';
-import { GeneratedQuiz, UserAnswers, QuizAttempt, QuizConfig, Folder, Language, SelectableQuestionType, KnowledgeBase, KnowledgeEntry, KnowledgeBlock, GeminiModel, GenerationMode, CustomQuestionCountModes, CustomQuestionCounts, DifficultyLevels, DifficultyCountModes, DifficultyCounts } from './types';
+import { GeneratedQuiz, UserAnswers, QuizAttempt, QuizConfig, Folder, Language, SelectableQuestionType, KnowledgeBase, KnowledgeEntry, KnowledgeBlock, GeminiModel, GenerationMode, CustomQuestionCountModes, CustomQuestionCounts, DifficultyLevels, DifficultyCountModes, DifficultyCounts, JobStatus, ProcessingJob } from './types';
 import FileUpload from './components/FileUpload';
 import ModeSelectionView from './components/ModeSelectionView';
 import SettingsView from './components/SettingsView';
@@ -17,18 +17,6 @@ import LatexRenderer from './components/LatexRenderer';
 
 type AppState = 'upload' | 'modeSelection' | 'selectingTypes' | 'settings' | 'quiz' | 'results' | 'editing' | 'knowledgeBaseView';
 type Theme = 'light' | 'dark';
-type JobStatus = 'processing' | 'completed' | 'error' | 'cancelled';
-
-export interface ProcessingJob {
-  id: string;
-  files: File[];
-  title: string;
-  generationMode: GenerationMode;
-  status: JobStatus;
-  result?: GeneratedQuiz;
-  error?: string;
-  controller: AbortController;
-}
 
 // NEW: Notification system
 interface Notification {
